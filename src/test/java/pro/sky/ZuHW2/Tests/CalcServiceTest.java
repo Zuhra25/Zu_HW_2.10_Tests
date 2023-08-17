@@ -80,7 +80,7 @@ public class CalcServiceTest {
         Integer arg222 = 0;
 
         assertThrows(IllegalArgumentException.class, () -> {
-            calcServiceImpl.divide(arg1, arg2);
+            calcServiceImpl.divide(arg111, arg222);
         },"Ожидалось исключение IllegalArgumentException");
     }
 
