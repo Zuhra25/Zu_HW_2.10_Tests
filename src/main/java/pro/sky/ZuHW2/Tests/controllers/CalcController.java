@@ -1,9 +1,7 @@
 package pro.sky.ZuHW2.Tests.controllers;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.MissingServletRequestParameterException;
+import org.springframework.web.bind.annotation.*;
 import pro.sky.ZuHW2.Tests.services.CalcService;
 
 @RestController
@@ -38,10 +36,10 @@ public class CalcController {
 
     @GetMapping(path = "/divide")
     public String divide(@RequestParam("num1") Integer arg1, @RequestParam("num2") Integer arg2) {
-        if (arg2 == 0) {
-            return String.format("Делить на ноль нельзя!!!");
-        } else {
             return String.format("%d / %d = %.1f", arg1, arg2, calcService.divide(arg1, arg2));
-        }
+    }
+    @ExceptionHandler({MissingServletRequestParameterException.class})
+    public String handleException(MissingServletRequestParameterException e) {
+        return "отсутсвует параметр!";
     }
 }
