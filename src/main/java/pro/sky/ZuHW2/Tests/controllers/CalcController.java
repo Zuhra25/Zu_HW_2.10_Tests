@@ -21,22 +21,22 @@ public class CalcController {
 
     @GetMapping(path = "/plus")
     public String plus(@RequestParam("num1") Integer arg1, @RequestParam("num2") Integer arg2) {
-        return String.format("%d + %d = %d", arg1, arg2, calcService.plus(arg1, arg2));
+        return calcService.plus(arg1, arg2);
     }
 
     @GetMapping(path = "/minus")
     public String minus(@RequestParam("num1") Integer arg1, @RequestParam("num2") Integer arg2) {
-        return String.format("%d - %d = %d", arg1, arg2, calcService.minus(arg1, arg2));
+        return calcService.minus(arg1, arg2);
     }
 
     @GetMapping(path = "/multiply")
     public String multiply(@RequestParam("num1") Integer arg1, @RequestParam("num2") Integer arg2) {
-        return String.format("%d * %d = %d", arg1, arg2, calcService.multiply(arg1, arg2));
+        return calcService.multiply(arg1, arg2);
     }
 
     @GetMapping(path = "/divide")
     public String divide(@RequestParam("num1") Integer arg1, @RequestParam("num2") Integer arg2) {
-            return String.format("%d / %d = %.1f", arg1, arg2, calcService.divide(arg1, arg2));
+            return calcService.divide(arg1, arg2);
     }
     @ExceptionHandler({MissingServletRequestParameterException.class})
     public String handleException(MissingServletRequestParameterException e) {
